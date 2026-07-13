@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-parchment text-navy-dark font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif text-navy-dark;
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.brass.DEFAULT');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Signature element: a library "index card" — a small tab notch cut
+     into the top edge, echoing card-catalog drawers. Used for dashboard
+     stat cards throughout the app. */
+  .index-card {
+    @apply relative bg-white rounded-sm shadow-card border border-navy/5 p-5 pt-7;
+  }
+  .index-card::before {
+    content: '';
+    @apply absolute -top-0 left-5 w-10 h-3 bg-parchment border border-navy/10 border-b-0 rounded-t-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-navy px-4 py-2.5 text-sm font-medium text-parchment transition-colors hover:bg-navy-light disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-navy/15 bg-white px-4 py-2.5 text-sm font-medium text-navy-dark transition-colors hover:bg-parchment-dark;
+  }
+  .field-label {
+    @apply block text-xs font-medium uppercase tracking-wider text-navy/60 mb-1.5;
+  }
+  .field-input {
+    @apply w-full rounded-sm border border-navy/15 bg-white px-3 py-2.5 text-sm text-navy-dark placeholder:text-navy/30 focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass transition-colors;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+}
