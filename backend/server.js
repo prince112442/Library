@@ -31,7 +31,7 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: process.env.CLIENT_URL || 'https://library-a9mwvftuq-prince112442s-projects.vercel.app',
     credentials: true,
   })
 );
