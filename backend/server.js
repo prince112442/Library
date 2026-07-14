@@ -43,11 +43,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
 
-  // Your Vercel frontend
-  "https://library-5bs9syfm0-prince112442s-projects.vercel.app",
-
-  // Optional: keep old deployment if still in use
-  "https://library-a9mwvftuq-prince112442s-projects.vercel.app",
+    "https://6a56b19228995b552ff8c512--liberay.netlify.app",
 ];
 
 const corsOptions = {
