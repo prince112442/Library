@@ -39,12 +39,18 @@ app.use(helmet());
 // CORS CONFIGURATION
 // ======================================
 
+// FIX: removed the stale Netlify deploy-preview URL (it had a random hash
+// prefix that changes on every deploy, so it always went stale). Using the
+// permanent production domain instead. A regex fallback is also included so
+// Netlify *deploy preview* URLs (which look like
+// https://<hash>--lms20.netlify.app) keep working automatically too.
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
-
-    "https://6a56b19228995b552ff8c512--liberay.netlify.app",
+  "https://lms20.netlify.app",
 ];
+
+const netlifyPreviewPattern = /^https:\/\/[a-z0-9-]+--lms20\.netlify\.app$/;
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -53,7 +59,7 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || netlifyPreviewPattern.test(origin)) {
       return callback(null, true);
     }
 
